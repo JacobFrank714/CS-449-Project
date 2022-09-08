@@ -1,4 +1,4 @@
-package sprint_0.product;
+package sprint_0.app;
 
 import javafx.application.Application;
 // import javafx.fxml.FXML;

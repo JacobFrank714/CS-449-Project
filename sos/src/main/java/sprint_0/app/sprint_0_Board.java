@@ -1,4 +1,4 @@
-package sprint_0.product;
+package sprint_0.app;
 
 public class sprint_0_Board {
     private int[][] grid;
