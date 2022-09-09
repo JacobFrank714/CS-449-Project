@@ -13,18 +13,18 @@ import javafx.scene.layout.Pane;
 
 // import java.io.IOException;
 
-public class sprint_0_GUI extends Application{
+public class GUI extends Application{
 
     private Square[][] squares;
 
     private Label gameStatus = new Label("Player 1's Turn");
 
-    static private sprint_0_Board board;
+    static private Board board;
 
     @Override
     public void start(Stage primaryStage) {
 		if (board == null) {
-			board = new sprint_0_Board(8);
+			board = new Board(8);
 		}
 		GridPane pane = new GridPane();
 		squares = new Square[8][8];
@@ -36,7 +36,7 @@ public class sprint_0_GUI extends Application{
 		borderPane.setCenter(pane);
 		borderPane.setBottom(gameStatus);
 
-		Scene scene = new Scene(borderPane, 700, 700);
+		Scene scene = new Scene(borderPane, 800, 800);
 		primaryStage.setTitle("SOS Game");
 		primaryStage.setScene(scene);
 		primaryStage.show();
