@@ -10,38 +10,38 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sprint_0.app.Controller">
    <children>
-      <RadioButton fx:id="BluePlayerTypeHP" layoutX="72.0" layoutY="160.0" mnemonicParsing="false" onAction="#changePlayerType" selected="true" text="Human Player">
+      <RadioButton fx:id="bluePlayerTypeHP" layoutX="72.0" layoutY="160.0" mnemonicParsing="false" onAction="#changeBluePlayerType" selected="true" text="Human Player">
          <toggleGroup>
             <ToggleGroup fx:id="BluePlayerType" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="RedPlayerTypeCP" layoutX="72.0" layoutY="208.0" mnemonicParsing="false" onAction="#changePlayerType" text="Computer Player" toggleGroup="$BluePlayerType" />
+      <RadioButton fx:id="bluePlayerTypeCP" layoutX="72.0" layoutY="208.0" mnemonicParsing="false" onAction="#changeBluePlayerType" text="Computer Player" toggleGroup="$BluePlayerType" />
       <RadioButton fx:id="gameTypeSM" layoutX="154.0" layoutY="31.0" mnemonicParsing="false" onAction="#changeGameType" selected="true" text="Simple Game">
          <toggleGroup>
             <ToggleGroup fx:id="GameType" />
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="gameTypeBL" layoutX="288.0" layoutY="31.0" mnemonicParsing="false" onAction="#changeGameType" text="Black Out Game" toggleGroup="$GameType" />
-      <RadioButton fx:id="RedPlayerTypeHP" layoutX="644.0" layoutY="160.0" mnemonicParsing="false" onAction="#changePlayerType" selected="true" text="Human Player">
+      <RadioButton fx:id="redPlayerTypeHP" layoutX="644.0" layoutY="160.0" mnemonicParsing="false" onAction="#changeRedPlayerType" selected="true" text="Human Player">
          <toggleGroup>
             <ToggleGroup fx:id="RedPlayerType" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="RedPlayerTypeCP" layoutX="644.0" layoutY="208.0" mnemonicParsing="false" onAction="#changePlayerType" selected="true" text="Computer Player" toggleGroup="$RedPlayerType" />
+      <RadioButton fx:id="redPlayerTypeCP" layoutX="644.0" layoutY="208.0" mnemonicParsing="false" onAction="#changeRedPlayerType" selected="true" text="Computer Player" toggleGroup="$RedPlayerType" />
       <Label layoutX="72.0" layoutY="31.0" text="Game Type" />
       <Label layoutX="78.0" layoutY="111.0" text="Blue Player" />
       <Label layoutX="662.0" layoutY="111.0" text="Red Player" />
-      <RadioButton fx:id="BluePlayerMoveS" layoutX="76.0" layoutY="301.0" mnemonicParsing="false" onAction="#changePlayerMove" selected="true" text="S">
+      <RadioButton fx:id="bluePlayerMoveS" layoutX="76.0" layoutY="301.0" mnemonicParsing="false" onAction="#changeBluePlayerMove" selected="true" text="S">
          <toggleGroup>
             <ToggleGroup fx:id="BluePlayerMove" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="BluePlayerMoveO" layoutX="76.0" layoutY="341.0" mnemonicParsing="false" onAction="#changePlayerMove" text="O" toggleGroup="$BluePlayerMove" />
-      <RadioButton fx:id="RedPlayerMoveS" layoutX="668.0" layoutY="301.0" mnemonicParsing="false" onAction="#changePlayerMove" selected="true" text="S">
+      <RadioButton fx:id="bluePlayerMoveO" layoutX="76.0" layoutY="341.0" mnemonicParsing="false" onAction="#changeBluePlayerMove" text="O" toggleGroup="$BluePlayerMove" />
+      <RadioButton fx:id="redPlayerMoveS" layoutX="668.0" layoutY="301.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" selected="true" text="S">
          <toggleGroup>
             <ToggleGroup fx:id="RedPlayerMove" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="RedPlayerMoveO" layoutX="668.0" layoutY="341.0" mnemonicParsing="false" onAction="#changePlayerMove" text="O" toggleGroup="$RedPlayerMove" />
+      <RadioButton fx:id="redPlayerMoveO" layoutX="668.0" layoutY="341.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" text="O" toggleGroup="$RedPlayerMove" />
       <Label layoutX="78.0" layoutY="269.0" text="Blue Move" />
       <Label layoutX="662.0" layoutY="269.0" text="Red Move" />
       <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="244.0" layoutY="121.0" prefHeight="240.0" prefWidth="300.0">

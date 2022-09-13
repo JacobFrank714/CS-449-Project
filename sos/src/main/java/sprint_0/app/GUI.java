@@ -1,15 +1,16 @@
 package sprint_0.app;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
+// import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+// import javafx.scene.control.Label;
+// import javafx.scene.layout.BorderPane;
+// import javafx.scene.layout.GridPane;
+// import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -18,13 +19,13 @@ import java.io.IOException;
 
 public class GUI extends Application{
 
-    private Label gameStatus = new Label("Player 1's Turn");
+    private Label gameStatus = new Label("Red Player's Turn");
 
 	private String fxml = "/resources/main";
 
 	private static Scene scene;
 
-    static private Board board;
+    // static private Board board;
 
     @Override
     public void start(Stage stage) throws IOException {
