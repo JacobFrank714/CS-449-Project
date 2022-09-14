@@ -5,8 +5,14 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+
 
 public class Controller {
+
+    private Square[][] squares;
     
     public Label gameType = new Label("SM");
 	public Label redPlayerType = new Label("CP");
@@ -16,6 +22,15 @@ public class Controller {
 
     @FXML
     private RadioButton gameTypeSM,gameTypeBL,bluePlayerTypeHP,bluePlayerTypeCP,redPlayerTypeHP,redPlayerTypeCP,bluePlayerMoveS,bluePlayerMoveO,redPlayerMoveS,redPlayerMoveO;
+
+    @FXML
+    private GridPane gridBoard;
+
+    @FXML
+    private TextField boardSize;
+
+    // @Override
+    // public void initialize(TextField boardSize) {}
 
     public void changeGameType(ActionEvent e){
 
@@ -75,4 +90,28 @@ public class Controller {
 
         System.out.println(redPlayerMove.getText());
     }
+
+    public void setBaordSize(ActionEvent e){
+
+        int x = Integer.parseInt(boardSize.getText());
+        System.out.println(x);
+        squares = new Square[x][x];
+        for(int i=0;i<x; i++){
+            for(int j=0;j<x; j++){
+                gridBoard.add(squares[i][j] = new Square(), j, i);
+            }
+        }
+    }
+
+    public class Square extends Pane {
+		public Square() {
+			setStyle("-fx-border-color: white");
+			this.setPrefSize(2000, 2000);
+			this.setOnMouseClicked(e -> handleMouseClick());
+		}
+
+		private void handleMouseClick() {
+		}
+
+	}
 }
