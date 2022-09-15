@@ -6,10 +6,8 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sprint_0.app.Controller">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sprint_0.app.Controller">
    <top>
       <AnchorPane prefHeight="83.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,73 +19,50 @@
             </RadioButton>
             <RadioButton fx:id="gameTypeBL" layoutX="235.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType" text="Black Out Game" toggleGroup="$GameType" />
             <Label layoutX="675.0" layoutY="33.0" text="Board Size" />
-            <TextField fx:id="boardSize" layoutX="739.0" layoutY="29.0" onAction="#setBaordSize" onInputMethodTextChanged="#setBaordSize" prefHeight="25.0" prefWidth="28.0" text="8" />
+            <TextField fx:id="boardSize" alignment="CENTER" layoutX="739.0" layoutY="29.0" onAction="#setBaordSize" onInputMethodTextChanged="#setBaordSize" prefHeight="25.0" prefWidth="28.0" text="8" />
          </children>
       </AnchorPane>
    </top>
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton fx:id="bluePlayerTypeHP" layoutX="40.0" layoutY="65.0" mnemonicParsing="false" onAction="#changeBluePlayerType" selected="true" text="Human Player">
-               <toggleGroup>
-                  <ToggleGroup fx:id="BluePlayerType" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="bluePlayerTypeCP" layoutX="40.0" layoutY="105.0" mnemonicParsing="false" onAction="#changeBluePlayerType" text="Computer Player">
-               <toggleGroup>
-                  <ToggleGroup fx:id="BluePlayerType" />
-               </toggleGroup>
-            </RadioButton>
             <Label layoutX="38.0" layoutY="40.0" text="Blue Player" />
-            <RadioButton fx:id="bluePlayerMoveS" layoutX="37.0" layoutY="220.0" mnemonicParsing="false" onAction="#changeBluePlayerMove" selected="true" text="S">
-               <toggleGroup>
-                  <ToggleGroup fx:id="BluePlayerMove" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="bluePlayerMoveO" layoutX="36.0" layoutY="251.0" mnemonicParsing="false" onAction="#changeBluePlayerMove" text="O">
-               <toggleGroup>
-                  <ToggleGroup fx:id="BluePlayerMove" />
-               </toggleGroup>
-            </RadioButton>
             <Label layoutX="39.0" layoutY="187.0" text="Blue Move" />
+            <RadioButton fx:id="bluePlayerTypeHP" layoutX="36.0" layoutY="69.0" mnemonicParsing="false" onAction="#changeBluePlayerType" selected="true" text="Human Player">
+               <toggleGroup>
+                  <ToggleGroup fx:id="BluePlayerType" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="bluePlayerTypeCP" layoutX="36.0" layoutY="104.0" mnemonicParsing="false" onAction="#changeBluePlayerType" text="Computer Player" toggleGroup="$BluePlayerType" />
+            <RadioButton fx:id="bluePlayerMoveS" layoutX="36.0" layoutY="228.0" mnemonicParsing="false" onAction="#changeBluePlayerMove" selected="true" text="S">
+               <toggleGroup>
+                  <ToggleGroup fx:id="BluePlayerMove" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="bluePlayerMoveO" layoutX="36.0" layoutY="261.0" mnemonicParsing="false" onAction="#changeBluePlayerMove" text="O" toggleGroup="$BluePlayerMove" />
          </children>
       </AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton fx:id="redPlayerTypeHP" layoutX="53.0" layoutY="73.0" mnemonicParsing="false" onAction="#changeRedPlayerType" text="Human Player">
-               <toggleGroup>
-                  <ToggleGroup fx:id="RedPlayerType" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="redPlayerTypeCP" layoutX="54.0" layoutY="109.0" mnemonicParsing="false" onAction="#changeRedPlayerType" selected="true" text="Computer Player">
-               <toggleGroup>
-                  <ToggleGroup fx:id="RedPlayerType" />
-               </toggleGroup>
-            </RadioButton>
             <Label layoutX="54.0" layoutY="42.0" text="Red Player" />
-            <RadioButton fx:id="redPlayerMoveS" layoutX="57.0" layoutY="190.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" selected="true" text="S">
+            <Label layoutX="55.0" layoutY="181.0" text="Red Move" />
+            <RadioButton fx:id="redPlayerMoveS" layoutX="57.0" layoutY="205.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" selected="true" text="S">
                <toggleGroup>
                   <ToggleGroup fx:id="RedPlayerMove" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="redPlayerMoveO" layoutX="55.0" layoutY="227.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" text="O">
+            <RadioButton fx:id="redPlayerMoveO" layoutX="56.0" layoutY="242.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" text="O" toggleGroup="$RedPlayerMove" />
+            <RadioButton fx:id="redPlayerTypeHP" layoutX="54.0" layoutY="74.0" mnemonicParsing="false" onAction="#changeRedPlayerType" text="Human Player">
                <toggleGroup>
-                  <ToggleGroup fx:id="RedPlayerMove" />
+                  <ToggleGroup fx:id="RedPlayerType" />
                </toggleGroup>
             </RadioButton>
-            <Label layoutX="55.0" layoutY="159.0" text="Red Move" />
+            <RadioButton fx:id="redPlayerTypeCP" layoutX="54.0" layoutY="105.0" mnemonicParsing="false" onAction="#changeRedPlayerType" selected="true" text="Computer Player" toggleGroup="$RedPlayerType" />
          </children>
       </AnchorPane>
    </right>
-   <center>
-      <GridPane fx:id="gridBoard" BorderPane.alignment="CENTER">
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" />
-         </rowConstraints>
-      </GridPane>
-   </center>
    <bottom>
       <AnchorPane prefHeight="90.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
    </bottom>
