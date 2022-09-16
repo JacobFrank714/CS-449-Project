@@ -15,23 +15,23 @@ public class Game {
 
     public static String gameType = new String("SM");
     
-    public Label getTurn(){
+    public static Label getTurn(){
         return turn;
     }
 
-    public String getBlueMove(){
+    public static String getBlueMove(){
         return bluePlayerMove;
     }
 
-    public String getRedMove(){
+    public static String getRedMove(){
         return redPlayerMove;
     }
 
-    public String getBlueType(){
+    public static String getBlueType(){
         return bluePlayerType;
     }
 
-    public String getRedType(){
+    public static String getRedType(){
         return redPlayerType;
     }
 
@@ -75,7 +75,7 @@ public class Game {
                 x.setFont(Font.font("Verdana",35));
                 x.autosize();
                 id.getChildren().add(x);
-                id.setAlignment(x,Pos.CENTER);
+                Square.setAlignment(x,Pos.CENTER);
                 setTurn("R");
             }
             else if (turn.getText() == "R"){
@@ -85,7 +85,7 @@ public class Game {
                 x.setFont(Font.font("Verdana",35));
                 x.autosize();
                 id.getChildren().add(x);
-                id.setAlignment(x,Pos.CENTER);
+                Square.setAlignment(x,Pos.CENTER);
                 setTurn("B");
             }
 
