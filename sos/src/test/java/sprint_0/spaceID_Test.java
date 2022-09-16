@@ -16,10 +16,10 @@ public class spaceID_Test {
 	}
 
 
-	// @AfterClass
-	// public static void tearDown(){
-	// 	Platform.exit();
-	// }
+	@AfterClass
+	public static void tearDown(){
+		Platform.exit();
+	}
 	
 	@Test
 	public void testSquareIDExpected() {

@@ -8,12 +8,13 @@ import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 
 public class Game {
+    
     public static String redPlayerType = new String("CP");
 	public static String bluePlayerType = new String("CP");
 	public static String redPlayerMove = new String("S");
 	public static String bluePlayerMove = new String("S");
-
     public static String gameType = new String("SM");
+    public static Label turn = new Label("B");
     
     public static Label getTurn(){
         return turn;
@@ -59,7 +60,6 @@ public class Game {
         turn.setText(newTurn);
     }
 
-    public static Label turn = new Label("B");
 
     @FXML
     public static ArrayList<Square> spaces = new ArrayList<Square>();
