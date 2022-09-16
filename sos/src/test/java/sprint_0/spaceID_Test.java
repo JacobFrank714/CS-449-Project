@@ -1,26 +1,35 @@
 package sprint_0;
 
-
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import sprint_0.app.Game;
+import static org.junit.Assert.*;
+import javafx.application.Platform;
+
+import sprint_0.app.Square;
 
 public class spaceID_Test {
-	@Before
-	public void setUp(){	
+	@BeforeClass
+	public static void setUp(){
+		Platform.startup(()->{});
 	}
 
-	@After
-	public void tearDown(){
-	}
 
+	// @AfterClass
+	// public static void tearDown(){
+	// 	Platform.exit();
+	// }
+	
 	@Test
-	public void testSquareID() {
-		// Game test = new Game();
-		Game.setBlueMove("O");
-		assertSame("O",Game.getBlueMove());
+	public void testSquareIDExpected() {
+		Square test = new Square(5, 3);
+		assertEquals("5,3",test.getId());
 	}
+	@Test
+	public void testSquareIDFail() {
+		Square test = new Square(5, 3);	
+		assertNotEquals("3,5",test.getId());
+		}
 }
+	
