@@ -7,7 +7,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 
-final class Game {
+public class Game {
     public static String redPlayerType = new String("CP");
 	public static String bluePlayerType = new String("CP");
 	public static String redPlayerMove = new String("S");

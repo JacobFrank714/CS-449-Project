@@ -24,11 +24,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.4.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
@@ -52,6 +54,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>sprint_0.app.GUI</mainClass>
+                            <appName>sos</appName>
                         </configuration>
                     </execution>
                 </executions>

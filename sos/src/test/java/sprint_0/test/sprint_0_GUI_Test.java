@@ -1,29 +1,27 @@
 package sprint_0.test;
 
+import static org.junit.Assert.assertSame;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.BeforeClass;
+import org.junit.Assert.*;
+import javafx.Platform;
 
-// import sprint_0.app.Board;
-// import sprint_0.app.Console;
+import sprint_0.app.Game;
 
 public class sprint_0_GUI_Test {
-
-    // private Board board;
-
-	// @Before
-	// public void setUp() throws Exception {
-	// 	board = new Board(8);
-	// }
-
-	// @After
-	// public void tearDown() throws Exception {
-	// }
-
-	// @Test
-	// public void testEmptyBoard() {
-	// 	new Console(board).displayBoard();
-	// }
+	@BeforeAll
+	static void initJfxRuntime() {
+    	Platform.startup(() -> {});
+	}
+	@Test
+	public void testSquareID() {
+		Game test = new Game();
+		test.setBlueMove("O");
+		assertSame("O",test.getBlueMove());
+	}
 
     
 }
