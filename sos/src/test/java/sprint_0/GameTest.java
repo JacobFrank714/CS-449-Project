@@ -11,6 +11,19 @@ import sprint_0.app.Game;
 
 public class GameTest {
 
+    // Uncomment below before using just this class
+
+    // @BeforeClass
+	// public static void setUp(){
+	// 	Platform.startup(()->{});
+	// }
+
+
+	// @AfterClass
+	// public static void tearDown(){
+	// 	Platform.exit();
+	// }
+
     @Test
     public void testTurnSwitch(){
         Game.setTurn("R");
