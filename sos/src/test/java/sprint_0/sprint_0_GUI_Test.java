@@ -1,4 +1,4 @@
-package sprint_0.test;
+package sprint_0;
 
 import static org.junit.Assert.assertSame;
 
@@ -7,21 +7,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.BeforeClass;
 import org.junit.Assert.*;
-import javafx.Platform;
 
 import sprint_0.app.Game;
+import sprint_0.app.GUI;
 
 public class sprint_0_GUI_Test {
-	@BeforeAll
-	static void initJfxRuntime() {
-    	Platform.startup(() -> {});
+	@Before
+	public void setUp(){
+		
 	}
+
 	@Test
 	public void testSquareID() {
 		Game test = new Game();
 		test.setBlueMove("O");
 		assertSame("O",test.getBlueMove());
 	}
-
-    
 }
