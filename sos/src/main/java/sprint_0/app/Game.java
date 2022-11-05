@@ -1,8 +1,13 @@
 package sprint_0.app;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
@@ -76,6 +81,9 @@ public class Game {
                 x.autosize();
                 id.getChildren().add(x);
                 Square.setAlignment(x,Pos.CENTER);
+
+                check(id);
+
                 setTurn("R");
             }
             else if (turn.getText() == "R"){
@@ -92,6 +100,15 @@ public class Game {
         }
         // makes that space unreachable so no overlapping moves
         spaces.remove(id);
+    }
+    private static void check(Square id) {
+        Parent board = id.getParent();
+        List children = board.getChildrenUnmodifiable();
+        Square test = (Square)children.get(0);
+        String[] testing = id.getId().split(",");
+        System.out.println(Integer.valueOf(id.getId().split(",")[0]) + 1);
+        System.out.println(id.getId().split(",")[1] + 1);
+        if(){}
     }
     
 }
