@@ -1,9 +1,6 @@
 package sprint_0.app;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +16,11 @@ public class Game {
 	public static String redPlayerMove = new String("S");
 	public static String bluePlayerMove = new String("S");
     public static String gameType = new String("SM");
-    public static Label turn = new Label("B");
+    public static String turn = new String("B");
+    public static Integer bpoints = 0;
+    public static Integer rpoints = 0;
     
-    public static Label getTurn(){
+    public static String getTurn(){
         return turn;
     }
 
@@ -62,7 +61,7 @@ public class Game {
     }
 
     public static void setTurn(String newTurn){
-        turn.setText(newTurn);
+        turn = newTurn;
     }
 
 
@@ -73,7 +72,7 @@ public class Game {
         // Finding if spaces is occupied
         if(spaces.contains(id)){
 
-            if(turn.getText() == "B"){
+            if(turn.equals("B")){
                 
                 Text x = new Text(bluePlayerMove);
 
@@ -86,7 +85,7 @@ public class Game {
 
                 setTurn("R");
             }
-            else if (turn.getText() == "R"){
+            else if (turn.equals("R")){
 
                 Text x= new Text(redPlayerMove);
 
@@ -94,6 +93,9 @@ public class Game {
                 x.autosize();
                 id.getChildren().add(x);
                 Square.setAlignment(x,Pos.CENTER);
+
+                check(id);
+
                 setTurn("B");
             }
 
@@ -101,14 +103,521 @@ public class Game {
         // makes that space unreachable so no overlapping moves
         spaces.remove(id);
     }
-    private static void check(Square id) {
-        Parent board = id.getParent();
-        List children = board.getChildrenUnmodifiable();
-        Square test = (Square)children.get(0);
-        String[] testing = id.getId().split(",");
-        System.out.println(Integer.valueOf(id.getId().split(",")[0]) + 1);
-        System.out.println(id.getId().split(",")[1] + 1);
-        if(){}
+
+    private static String getDirection(Square n, String direction){
+        Integer x = Integer.valueOf(n.getId().split(",")[0]);
+        Integer y = Integer.valueOf(n.getId().split(",")[1]);
+        String output = "";
+        switch(direction){
+            case("downRight"):
+                output =  String.valueOf(x + 1)+","+String.valueOf(y + 1);
+                break;
+            case("downLeft"):
+                output =  String.valueOf(x + 1)+","+String.valueOf(y - 1);
+                break;
+            case("upRight"):
+                output =  String.valueOf(x - 1)+","+String.valueOf(y + 1);
+                break;
+            case("upLeft"):
+                output =  String.valueOf(x - 1)+","+String.valueOf(y - 1);
+                break;
+            case("down"):
+                output =  String.valueOf(x + 1)+","+String.valueOf(y);
+                break;
+            case("Right"):
+                output =  String.valueOf(x)+","+String.valueOf(y + 1);
+                break;
+            case("Left"):
+                output =  String.valueOf(x)+","+String.valueOf(y - 1);
+                break;
+            case("up"):
+                output =  String.valueOf(x - 1)+","+String.valueOf(y);
+                break;
+        }
+        return output;
     }
-    
+
+    private static void check(Square current) {
+        List children = current.getParent().getChildrenUnmodifiable();
+        List<Square> squares = children;
+
+        for(Square i: squares){
+
+            Text tmp = (Text)current.getChildren().get(0);
+            String currentText = tmp.getText();
+
+            if(i.getId().equals(getDirection(current, "downRight"))){
+                if(!i.getChildren().isEmpty()){
+                    Text k = (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(k.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"downRight"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"backdiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(k.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"upLeft"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"backdiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"Right"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"Right"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"horizontal");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"Left"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"horizontal");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"upRight"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"upRight"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"fordiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"downLeft"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"fordiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"up"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"up"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"vertical");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"down"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"vertical");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"upLeft"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"upLeft"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"backdiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"downRight"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"backdiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"Left"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"Left"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                                System.out.println("Game over");
+                                                Square.drawLine(current,i,j,"horizontal");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"Right"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"horizontal");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"downLeft"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"downLeft"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"fordiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"upRight"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"fordiag");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if(i.getId().equals(getDirection(current,"down"))){
+                if(!i.getChildren().isEmpty()){
+                    Text text= (Text)i.getChildren().get(0);
+                    if(currentText.equals("S")){
+                        if(text.getText().equals("O")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(i,"down"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"vertical");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(currentText.equals("O")){
+                        if(text.getText().equals("S")){
+                            for(Square j: squares){
+                                if(j.getId().equals(getDirection(current,"up"))){
+                                    if(!j.getChildren().isEmpty()){
+                                        Text n = (Text)j.getChildren().get(0);
+                                        if(n.getText().equals("S")){
+                                            if(gameType.equals("SM")){
+                                                spaces.clear();
+                                            }
+                                            else if(gameType.equals("GM")){
+                                                if(turn.equals("B")){
+                                                    bpoints += 1;
+                                                }
+                                                else if(turn.equals("R")){
+                                                    rpoints += 1;
+                                                }
+                                            }
+                                            System.out.println("Game over");
+                                            Square.drawLine(current,i,j,"vertical");
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

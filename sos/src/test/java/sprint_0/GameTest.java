@@ -28,7 +28,7 @@ public class GameTest {
     @Test
     public void testTurnSwitch(){
         Game.setTurn("R");
-        assertEquals("R",Game.getTurn().getText());
+        assertEquals("R",Game.getTurn());
     }
     @Test
     public void testMoveSwitch(){
