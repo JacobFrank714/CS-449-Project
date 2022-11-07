@@ -9,17 +9,20 @@ import java.io.IOException;
 
 public class GUI extends Application{
 
-	private String fxml = "/resources/board";
-
+	private static String fxml = "board";
+    private static Scene scene;
+    
     @Override
     public void start(Stage stage) throws IOException {
-
-		Parent root = loadFXML(fxml);
-		Scene scene = new Scene(root, 900, 600);
+        scene = new Scene(loadFXML(fxml), 900, 600);
 		stage.setTitle("SOS Game");
 		stage.setScene(scene);
 		stage.show();
 	}
+
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GUI.class.getResource(fxml + ".fxml"));

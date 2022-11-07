@@ -1,5 +1,7 @@
 package sprint_0.app;
 
+import java.io.IOException;
+
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -11,11 +13,18 @@ public class Square extends StackPane {
 		setStyle("-fx-border-color: white; -fx-background-color: lightgrey;");
 		setId(String.valueOf(x)+"," +String.valueOf(y));
 		this.setPrefSize(2000, 2000);
-		this.setOnMouseClicked(e -> handleMouseClick());
+		this.setOnMouseClicked(e -> {
+			try {
+				handleMouseClick();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
         Game.spaces.add(this);
 	}
 	
-	private void handleMouseClick() {
+	private void handleMouseClick() throws IOException {
 		Game.makeMove(this);
 	}
 

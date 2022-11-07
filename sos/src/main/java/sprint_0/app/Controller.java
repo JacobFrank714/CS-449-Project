@@ -5,12 +5,15 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class Controller {
-
-    
+public class Controller {    
 
     private Square[][] squares;
 
@@ -22,6 +25,9 @@ public class Controller {
     
     @FXML
     private BorderPane borderPane;
+
+    @FXML
+    private Pane bottomSection;
     
     public void changeGameType(ActionEvent e){
         
@@ -89,5 +95,42 @@ public class Controller {
         }
         
         borderPane.setCenter(gridBoard);
+        Text  turn = new Text();
+        turn.setText("Blue Player's Turn");
+        turn.setFill(Color.BLUE);
+        turn.setFont(Font.font("Verdana",35));
+
+        
+        bottomSection.getChildren().add(turn);
+    }
+
+    public static void turnSwitch(String turn){
+        // bottomSection.getChildren()
+    }
+
+    private void turnSwitchText(String turn){
+        if(turn.equals("R")){
+            bottomSection.getChildren();
+        }
+    }
+
+    public static void gameOver(String turn){
+        if(turn.equals("B")){
+            System.out.println("Blue Player Wins");
+        }
+        else if(turn.equals("R")){
+            System.out.println("Red Player Wins");
+        }
+    }
+    public static void gameOver(Integer blueScore, Integer redScore){
+        if(blueScore > redScore){
+            System.out.println("Blue Player Wins with :" + blueScore + " points");
+        }
+        else if(redScore < blueScore){
+            System.out.println("Red Player Wins with :" + redScore + " points");
+        }
+        else{
+            System.out.println("Tie");
+        }
     }
 }

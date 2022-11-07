@@ -2,12 +2,15 @@ package sprint_0.app;
 
 import javafx.fxml.FXML;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
+
+import sprint_0.app.Controller;
 
 public class Game {
     
@@ -68,7 +71,7 @@ public class Game {
     @FXML
     public static ArrayList<Square> spaces = new ArrayList<Square>();
 
-    public static void makeMove (Square id){
+    public static void makeMove (Square id) throws IOException{
         // Finding if spaces is occupied
         if(spaces.contains(id)){
 
@@ -84,6 +87,7 @@ public class Game {
                 check(id);
 
                 setTurn("R");
+                Controller.turnSwitch(turn);
             }
             else if (turn.equals("R")){
 
@@ -97,6 +101,7 @@ public class Game {
                 check(id);
 
                 setTurn("B");
+                Controller.turnSwitch(turn);
             }
 
         }
@@ -137,7 +142,7 @@ public class Game {
         return output;
     }
 
-    private static void check(Square current) {
+    private static void check(Square current) throws IOException {
         List children = current.getParent().getChildrenUnmodifiable();
         List<Square> squares = children;
 
@@ -158,6 +163,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -167,7 +174,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"backdiag");
                                             break;
                                         }
@@ -189,12 +195,13 @@ public class Game {
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
                                                     bpoints += 1;
+                                                    Controller.gameOver(turn);
+                                                    break;
                                                 }
                                                 else if(turn.equals("R")){
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"backdiag");
                                             break;
                                         }
@@ -217,6 +224,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -226,7 +235,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"horizontal");
                                             break;
                                         }
@@ -244,6 +252,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -253,7 +263,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"horizontal");
                                             break;
                                         }
@@ -276,6 +285,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -285,7 +296,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"fordiag");
                                             break;
                                         }
@@ -303,6 +313,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -312,7 +324,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"fordiag");
                                             break;
                                         }
@@ -335,6 +346,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -344,7 +357,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"vertical");
                                             break;
                                         }
@@ -362,6 +374,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -371,7 +385,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"vertical");
                                             break;
                                         }
@@ -394,6 +407,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -403,7 +418,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"backdiag");
                                             break;
                                         }
@@ -421,6 +435,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -430,7 +446,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"backdiag");
                                             break;
                                         }
@@ -453,6 +468,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -462,8 +479,7 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                                System.out.println("Game over");
-                                                Square.drawLine(current,i,j,"horizontal");
+                                            Square.drawLine(current,i,j,"horizontal");
                                             break;
                                         }
                                     }
@@ -480,6 +496,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -489,7 +507,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"horizontal");
                                             break;
                                         }
@@ -512,6 +529,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -521,7 +540,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"fordiag");
                                             break;
                                         }
@@ -539,6 +557,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -548,7 +568,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"fordiag");
                                             break;
                                         }
@@ -571,6 +590,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -580,7 +601,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"vertical");
                                             break;
                                         }
@@ -598,6 +618,8 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                Controller.gameOver(turn);
+                                                break;
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -607,7 +629,6 @@ public class Game {
                                                     rpoints += 1;
                                                 }
                                             }
-                                            System.out.println("Game over");
                                             Square.drawLine(current,i,j,"vertical");
                                             break;
                                         }
@@ -617,6 +638,11 @@ public class Game {
                         }
                     }
                 }
+            }
+        }
+        if(gameType.equals("GM")){
+            if(spaces.isEmpty()){
+                Controller.gameOver(bpoints, rpoints);
             }
         }
     }
