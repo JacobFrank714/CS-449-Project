@@ -2,6 +2,8 @@ package sprint_0.app;
 
 import javafx.fxml.FXML;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.GridPane;
@@ -13,8 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class Controller {    
-
+public class SimpleGameController {
     private Square[][] squares;
 
     @FXML
@@ -79,29 +80,37 @@ public class Controller {
         }
     }
     
-    public void setBaordSize(ActionEvent e){
+    public void setBaordSize(ActionEvent e) throws IOException{
 
-        GridPane gridBoard = new GridPane();
+        if(gameTypeSM.isSelected()){
+            GridPane gridBoard = new GridPane();
         
-        int x = Integer.parseInt(boardSize.getText());
+            int x = Integer.parseInt(boardSize.getText());
 
-        squares = new Square[x][x];
-        
-        for(int i=0;i<x; i++){
-            for(int j=0;j<x; j++){
-                
-                gridBoard.add(squares[i][j] = new Square(i, j), j, i);
+            squares = new Square[x][x];
+            
+            for(int i=0;i<x; i++){
+                for(int j=0;j<x; j++){
+                    
+                    gridBoard.add(squares[i][j] = new Square(i, j), j, i);
+                }
             }
+            
+            borderPane.setCenter(gridBoard);
+            Text  turn = new Text();
+            turn.setText("Blue Player's Turn");
+            turn.setFill(Color.BLUE);
+            turn.setFont(Font.font("Verdana",35));
+
+            
+            bottomSection.getChildren().add(turn);
         }
-        
-        borderPane.setCenter(gridBoard);
-        Text  turn = new Text();
-        turn.setText("Blue Player's Turn");
-        turn.setFill(Color.BLUE);
-        turn.setFont(Font.font("Verdana",35));
+        else if(gameTypeBL.isSelected()){
+            GUI.setRoot("GeneralGame.fxml");
+            GeneralGameController.setBaordSize(e);
+        }
 
         
-        bottomSection.getChildren().add(turn);
     }
 
     public static void turnSwitch(String turn){

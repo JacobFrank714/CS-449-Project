@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 
-import sprint_0.app.Controller;
+import sprint_0.app.NewGameController;
 
 public class Game {
     
@@ -87,7 +87,7 @@ public class Game {
                 check(id);
 
                 setTurn("R");
-                Controller.turnSwitch(turn);
+                NewGameController.turnSwitch(turn);
             }
             else if (turn.equals("R")){
 
@@ -101,7 +101,7 @@ public class Game {
                 check(id);
 
                 setTurn("B");
-                Controller.turnSwitch(turn);
+                NewGameController.turnSwitch(turn);
             }
 
         }
@@ -163,7 +163,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -195,7 +195,7 @@ public class Game {
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
                                                     bpoints += 1;
-                                                    Controller.gameOver(turn);
+                                                    NewGameController.gameOver(turn);
                                                     break;
                                                 }
                                                 else if(turn.equals("R")){
@@ -224,7 +224,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -252,7 +252,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -285,7 +285,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -313,7 +313,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -346,7 +346,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -374,7 +374,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -407,7 +407,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -435,7 +435,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -468,7 +468,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -496,7 +496,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -529,7 +529,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -557,7 +557,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -590,7 +590,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -618,7 +618,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                Controller.gameOver(turn);
+                                                NewGameController.gameOver(turn);
                                                 break;
                                             }
                                             else if(gameType.equals("GM")){
@@ -642,7 +642,7 @@ public class Game {
         }
         if(gameType.equals("GM")){
             if(spaces.isEmpty()){
-                Controller.gameOver(bpoints, rpoints);
+                NewGameController.gameOver(bpoints, rpoints);
             }
         }
     }

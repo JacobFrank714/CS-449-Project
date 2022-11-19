@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class GUI extends Application{
 
-	private static String fxml = "board";
+	private static String fxml = "NewGame";
     private static Scene scene;
     
     @Override
