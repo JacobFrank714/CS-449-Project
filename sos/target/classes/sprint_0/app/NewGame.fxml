@@ -20,7 +20,7 @@
             </RadioButton>
             <RadioButton fx:id="gameTypeBL" layoutX="235.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType" text="Black Out Game" toggleGroup="$GameType" />
             <Label layoutX="675.0" layoutY="33.0" text="Board Size" />
-            <TextField fx:id="boardSize" alignment="CENTER" layoutX="739.0" layoutY="29.0" onAction="#setBaordSize" onInputMethodTextChanged="#setBaordSize" prefHeight="25.0" prefWidth="28.0" text="8" />
+            <TextField fx:id="boardSize" alignment="CENTER" layoutX="739.0" layoutY="29.0" prefHeight="25.0" prefWidth="28.0" text="8" />
          </children>
       </AnchorPane>
    </top>

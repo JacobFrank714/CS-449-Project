@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class GUI extends Application{
 
-	private static String fxml = "NewGame";
+	private static String fxml = "SimpleGame";
     private static Scene scene;
     
     @Override
@@ -22,6 +22,8 @@ public class GUI extends Application{
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        Game.setBlueMove("S");
+        Game.setRedMove("S");
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

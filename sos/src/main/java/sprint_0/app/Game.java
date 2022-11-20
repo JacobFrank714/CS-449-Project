@@ -10,8 +10,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 
-import sprint_0.app.NewGameController;
-
 public class Game {
     
     public static String redPlayerType = new String("CP");
@@ -74,7 +72,9 @@ public class Game {
     public static void makeMove (Square id) throws IOException{
         // Finding if spaces is occupied
         if(spaces.contains(id)){
-
+            
+            // makes that space unreachable so no overlapping moves
+            spaces.remove(id);
             if(turn.equals("B")){
                 
                 Text x = new Text(bluePlayerMove);
@@ -105,8 +105,6 @@ public class Game {
             }
 
         }
-        // makes that space unreachable so no overlapping moves
-        spaces.remove(id);
     }
 
     private static String getDirection(Square n, String direction){
@@ -163,8 +161,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -195,8 +192,7 @@ public class Game {
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
                                                     bpoints += 1;
-                                                    NewGameController.gameOver(turn);
-                                                    break;
+                                                    SimpleGameController.gameOver(turn);
                                                 }
                                                 else if(turn.equals("R")){
                                                     rpoints += 1;
@@ -224,8 +220,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -252,8 +247,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -285,8 +279,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -313,8 +306,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -346,8 +338,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -374,8 +365,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -407,8 +397,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -435,8 +424,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -468,8 +456,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -496,8 +483,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -529,8 +515,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -557,8 +542,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -590,8 +574,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -618,8 +601,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                NewGameController.gameOver(turn);
-                                                break;
+                                                SimpleGameController.gameOver(turn);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(turn.equals("B")){
@@ -640,9 +622,10 @@ public class Game {
                 }
             }
         }
+        System.out.println(spaces);
         if(gameType.equals("GM")){
             if(spaces.isEmpty()){
-                NewGameController.gameOver(bpoints, rpoints);
+                GeneralGameController.gameOver(bpoints, rpoints);
             }
         }
     }

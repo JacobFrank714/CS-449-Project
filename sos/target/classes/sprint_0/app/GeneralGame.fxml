@@ -13,14 +13,14 @@
       <AnchorPane prefHeight="83.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="50.0" layoutY="33.0" text="Game Type" />
-            <RadioButton fx:id="gameTypeSM" layoutX="131.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType" selected="true" text="Simple Game">
+            <RadioButton fx:id="gameTypeSM" layoutX="131.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType"  text="Simple Game">
                <toggleGroup>
                   <ToggleGroup fx:id="GameType" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="gameTypeBL" layoutX="235.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType" text="Black Out Game" toggleGroup="$GameType" />
+            <RadioButton fx:id="gameTypeBL" layoutX="235.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType" selected="true" text="Black Out Game" toggleGroup="$GameType" />
             <Label layoutX="675.0" layoutY="33.0" text="Board Size" />
-            <TextField fx:id="boardSize" alignment="CENTER" layoutX="739.0" layoutY="29.0" onAction="#setBaordSize" onInputMethodTextChanged="#setBaordSize" prefHeight="25.0" prefWidth="28.0" text="8" />
+            <TextField fx:id="boardSize" alignment="CENTER" layoutX="739.0" layoutY="29.0" onAction="#setBaordSize" onInputMethodTextChanged="#setBaordSize" prefHeight="25.0" prefWidth="28.0" />
          </children>
       </AnchorPane>
    </top>
