@@ -4,9 +4,12 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -23,6 +26,14 @@ public class NewGameController {
 
     @FXML
     private Pane bottomSection;
+
+    @FXML
+    private Label PlayerTurnText;
+
+    @FXML
+    protected Text WinText;
+
+    Game content = new Game();
     
     public void changeGameType(ActionEvent e) throws IOException{
         
@@ -31,7 +42,7 @@ public class NewGameController {
             GUI.setRoot("SimpleGame");
         }
         else if (gameTypeBL.isSelected()) {
-            Game.setGameType("BL");
+            Game.setGameType("GM");
             GUI.setRoot("GeneralGame");
         }
     }
@@ -76,7 +87,27 @@ public class NewGameController {
         }
     }
 
-    public static void turnSwitch(String turn){
-        // bottomSection.getChildren()
+    @FXML
+    void initialize(){
+        PlayerTurnText.textProperty().bind(Bindings.createStringBinding(() -> {
+            String s = " ";
+            if (Game.getBlueTurnPropValue())
+                s = "Blue Player's Turn";
+            else
+                s = "Red Player's Turn";
+            return s;
+        }, content.getBlueTurnProp()));
+        WinText.textProperty().bind(Bindings.createStringBinding(() -> {
+            String s = " ";
+            if (Game.getWinnerPropValue().equals("B"))
+                s = "Blue Wins";
+            else if (Game.getWinnerPropValue().equals("R"))
+                s = "Red Wins";
+            else if (Game.getWinnerPropValue().equals("T"))
+                s = "Tie";
+            else
+                s = " ";
+            return s;
+        }, content.getBlueTurnProp()));
     }
 }

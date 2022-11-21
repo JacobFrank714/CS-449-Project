@@ -7,9 +7,6 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -39,24 +36,18 @@ public class GeneralGameController extends NewGameController {
                     gridBoard.add(squares[i][j] = new Square(i, j), j, i);
                 }
             }
-            
-            borderPane.setCenter(gridBoard);
-            Text  turn = new Text();
-            turn.setText("Blue Player's Turn");
-            turn.setFill(Color.BLUE);
-            turn.setFont(Font.font("Verdana",35));
-            
-            bottomSection.getChildren().add(turn);       
+            borderPane.setCenter(gridBoard);  
     }
-    public static void gameOver(Integer blueScore, Integer redScore){
-        if(blueScore > redScore){
-            System.out.println("Blue Player Wins with :" + blueScore + " points");
+
+    public static void gameOver(Integer bpoints, Integer rpoints){
+        if(bpoints > rpoints){
+            Game.setWinnerProp("B");
         }
-        else if(redScore < blueScore){
-            System.out.println("Red Player Wins with :" + redScore + " points");
+        else if (bpoints < rpoints) {
+            Game.setWinnerProp("R");
         }
         else{
-            System.out.println("Tie");
+            Game.setWinnerProp("T");
         }
     }
 }

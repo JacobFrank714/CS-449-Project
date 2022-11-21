@@ -25,15 +25,15 @@ public class GameTest {
 	// 	Platform.exit();
 	// }
 
-    @Test
-    public void testTurnSwitch(){
-        Game.setTurn("R");
-        assertEquals("R",Game.getTurn());
-    }
-    @Test
-    public void testMoveSwitch(){
-        Game.setBlueMove("O");
-        assertEquals("O",Game.getBlueMove());
-    }
+    // @Test
+    // public void testTurnSwitch(){
+    //     Game.setTurn("R");
+    //     assertEquals("R",Game.getTurn());
+    // }
+    // @Test
+    // public void testMoveSwitch(){
+    //     Game.setBlueMove("O");
+    //     assertEquals("O",Game.getBlueMove());
+    // }
     
 }

@@ -18,6 +18,7 @@ public class GUI extends Application{
 		stage.setTitle("SOS Game");
 		stage.setScene(scene);
 		stage.show();
+        
 	}
 
     static void setRoot(String fxml) throws IOException {

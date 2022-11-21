@@ -56,7 +56,7 @@ public class move_Test {
         Bounds bounds = test.getBoundsInLocal();
         Bounds sceneCoords = test.localToScene(bounds);
         // Sets the turn to Red and Red's move to S
-        Game.setTurn("R");
+        // Game.setTurn("R");
         Game.setRedMove("S");
         // Fires a mouse click event on the test square
         test.fireEvent(new MouseEvent(MouseEvent.MOUSE_CLICKED,
@@ -98,7 +98,7 @@ public class move_Test {
         Bounds bounds = test.getBoundsInLocal();
         Bounds sceneCoords = test.localToScene(bounds);
         // Sets the turn to Red and Red's move to O
-        Game.setTurn("R");
+        // Game.setTurn("R");
         Game.setRedMove("O");
         // Fires a mouse click event on the test square
         test.fireEvent(new MouseEvent(MouseEvent.MOUSE_CLICKED,

@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sprint_0.app.GeneralGameController">
    <top>
       <AnchorPane prefHeight="83.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="50.0" layoutY="33.0" text="Game Type" />
-            <RadioButton fx:id="gameTypeSM" layoutX="131.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType"  text="Simple Game">
+            <RadioButton fx:id="gameTypeSM" layoutX="131.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeGameType" text="Simple Game">
                <toggleGroup>
                   <ToggleGroup fx:id="GameType" />
                </toggleGroup>
@@ -65,6 +66,10 @@
       </AnchorPane>
    </right>
    <bottom>
-      <Pane fx:id="bottomSection" minHeight="90.0" minWidth="900.0" prefHeight="90.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="bottomSection" minHeight="90.0" minWidth="900.0" prefHeight="90.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="WinText" layoutX="725.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="120.0" />
+            <Label fx:id="PlayerTurnText" layoutX="14.0" layoutY="58.0" text="Blue Player's Turn" textFill="BLUE" />
+         </children></Pane>
    </bottom>
 </BorderPane>

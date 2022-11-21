@@ -1,5 +1,9 @@
 package sprint_0.app;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -7,22 +11,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.text.Text;
-import javafx.scene.text.Font;
-import javafx.geometry.Pos;
 
 public class Game {
+
+    static BooleanProperty blueTurnProp = new SimpleBooleanProperty(true);
+    static StringProperty winnerProp = new SimpleStringProperty(" ");
     
-    public static String redPlayerType = new String("CP");
-	public static String bluePlayerType = new String("CP");
+    public static String redPlayerType = new String("HP");
+	public static String bluePlayerType = new String("HP");
 	public static String redPlayerMove = new String("S");
 	public static String bluePlayerMove = new String("S");
     public static String gameType = new String("SM");
-    public static String turn = new String("B");
     public static Integer bpoints = 0;
     public static Integer rpoints = 0;
     
-    public static String getTurn(){
-        return turn;
+    public BooleanProperty getBlueTurnProp() {
+        return blueTurnProp;
+    }
+    
+    public static void setBlueTurnPropValue(Boolean blueTurn) {
+        blueTurnProp.setValue(blueTurn);
+    }
+    
+    public static boolean getBlueTurnPropValue() {
+        return blueTurnProp.getValue();
+    }
+
+    public StringProperty getWinnerProp() {
+        return winnerProp;
+    }
+
+    public static void setWinnerProp(String winner) {
+        winnerProp.setValue(winner);
+    }
+
+    public static String getWinnerPropValue() {
+        return winnerProp.getValue();
     }
 
     public static String getBlueMove(){
@@ -61,51 +85,10 @@ public class Game {
         gameType = type;
     }
 
-    public static void setTurn(String newTurn){
-        turn = newTurn;
-    }
 
 
     @FXML
     public static ArrayList<Square> spaces = new ArrayList<Square>();
-
-    public static void makeMove (Square id) throws IOException{
-        // Finding if spaces is occupied
-        if(spaces.contains(id)){
-            
-            // makes that space unreachable so no overlapping moves
-            spaces.remove(id);
-            if(turn.equals("B")){
-                
-                Text x = new Text(bluePlayerMove);
-
-                x.setFont(Font.font("Verdana",35));
-                x.autosize();
-                id.getChildren().add(x);
-                Square.setAlignment(x,Pos.CENTER);
-
-                check(id);
-
-                setTurn("R");
-                NewGameController.turnSwitch(turn);
-            }
-            else if (turn.equals("R")){
-
-                Text x= new Text(redPlayerMove);
-
-                x.setFont(Font.font("Verdana",35));
-                x.autosize();
-                id.getChildren().add(x);
-                Square.setAlignment(x,Pos.CENTER);
-
-                check(id);
-
-                setTurn("B");
-                NewGameController.turnSwitch(turn);
-            }
-
-        }
-    }
 
     private static String getDirection(Square n, String direction){
         Integer x = Integer.valueOf(n.getId().split(",")[0]);
@@ -140,7 +123,7 @@ public class Game {
         return output;
     }
 
-    private static void check(Square current) throws IOException {
+    public static void check(Square current) throws IOException {
         List children = current.getParent().getChildrenUnmodifiable();
         List<Square> squares = children;
 
@@ -161,13 +144,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -188,13 +171,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
-                                                    SimpleGameController.gameOver(turn);
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -220,13 +203,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -247,13 +230,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -279,13 +262,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -306,13 +289,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -338,13 +321,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -365,13 +348,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -397,13 +380,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -424,13 +407,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -456,13 +439,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -483,13 +466,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -515,13 +498,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -542,13 +525,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -574,13 +557,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -601,13 +584,13 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(turn);
+                                                SimpleGameController.gameOver(getBlueTurnPropValue());
                                             }
                                             else if(gameType.equals("GM")){
-                                                if(turn.equals("B")){
+                                                if(getBlueTurnPropValue()){
                                                     bpoints += 1;
                                                 }
-                                                else if(turn.equals("R")){
+                                                else if(getBlueTurnPropValue()){
                                                     rpoints += 1;
                                                 }
                                             }
@@ -622,11 +605,12 @@ public class Game {
                 }
             }
         }
-        System.out.println(spaces);
         if(gameType.equals("GM")){
-            if(spaces.isEmpty()){
+            if(spaces.size() == 0){
                 GeneralGameController.gameOver(bpoints, rpoints);
             }
         }
     }
+
+    
 }
