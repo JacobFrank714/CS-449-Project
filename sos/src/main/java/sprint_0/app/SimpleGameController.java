@@ -37,17 +37,18 @@ public class SimpleGameController extends NewGameController {
             }
         }
         borderPane.setCenter(gridBoard);
+        Game.setWinnerProp(" ");
     }
 
     public static void gameOver(Boolean turn){
         if(turn){
             Game.setWinnerProp("B");
         }
-        else{
+        else if(!turn){
             Game.setWinnerProp("R");
         }
+        else {
+            Game.setWinnerProp("T");
+        }
     }
-
-    
-    
 }

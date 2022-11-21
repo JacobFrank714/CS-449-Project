@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sprint_0.app.SimpleGameController">
@@ -56,20 +57,26 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="redPlayerMoveO" layoutX="56.0" layoutY="242.0" mnemonicParsing="false" onAction="#changeRedPlayerMove" text="O" toggleGroup="$RedPlayerMove" />
-            <RadioButton fx:id="redPlayerTypeHP" layoutX="54.0" layoutY="74.0" mnemonicParsing="false" onAction="#changeRedPlayerType" text="Human Player">
+            <RadioButton fx:id="redPlayerTypeHP" layoutX="54.0" layoutY="74.0" mnemonicParsing="false" onAction="#changeRedPlayerType" selected="true" text="Human Player">
                <toggleGroup>
                   <ToggleGroup fx:id="RedPlayerType" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="redPlayerTypeCP" layoutX="54.0" layoutY="105.0" mnemonicParsing="false" onAction="#changeRedPlayerType" selected="true" text="Computer Player" toggleGroup="$RedPlayerType" />
+            <RadioButton fx:id="redPlayerTypeCP" layoutX="54.0" layoutY="105.0" mnemonicParsing="false" onAction="#changeRedPlayerType" text="Computer Player" toggleGroup="$RedPlayerType" />
          </children>
       </AnchorPane>
    </right>
    <bottom>
       <Pane fx:id="bottomSection" minHeight="90.0" minWidth="900.0" prefHeight="90.0" prefWidth="900.0" BorderPane.alignment="BOTTOM_LEFT">
          <children>
-            <Text fx:id="WinText" layoutX="672.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="145.0" />
-            <Label fx:id="PlayerTurnText" layoutX="14.0" layoutY="58.0" text="Blue Player's Turn" textFill="BLUE" />
+            <Text fx:id="WinText" layoutX="329.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="243.0">
+               <font>
+                  <Font size="24.0" />
+               </font></Text>
+            <Label fx:id="PlayerTurnText" layoutX="14.0" layoutY="58.0" text="Blue Player's Turn">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children></Pane>
    </bottom>
 </BorderPane>

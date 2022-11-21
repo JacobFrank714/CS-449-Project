@@ -45,6 +45,10 @@ public class Square extends StackPane {
 				Game.check(this);
 
 				Game.setBlueTurnPropValue(false);
+
+				if(Game.redPlayerType == "CP"){
+					NewGameController.cpu2.makeMove();
+				}
 			}
 			else if (!Game.getBlueTurnPropValue()){
 
@@ -58,6 +62,10 @@ public class Square extends StackPane {
 				Game.check(this);
 
 				Game.setBlueTurnPropValue(true);
+
+				if(Game.bluePlayerType == "CP"){
+					NewGameController.cpu1.makeMove();
+				}
 			}
 
 		}

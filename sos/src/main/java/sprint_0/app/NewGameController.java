@@ -33,6 +33,9 @@ public class NewGameController {
     @FXML
     protected Text WinText;
 
+    public static ComputerPlayer cpu1 = new ComputerPlayer();
+    public static ComputerPlayer cpu2 = new ComputerPlayer();
+    
     Game content = new Game();
     
     public void changeGameType(ActionEvent e) throws IOException{
@@ -54,6 +57,7 @@ public class NewGameController {
         }
         else if (bluePlayerTypeCP.isSelected()){
             Game.setBlueType("CP");
+            cpu1.setSide(true);
         }
     }
     
@@ -64,6 +68,7 @@ public class NewGameController {
         }
         else if (redPlayerTypeCP.isSelected()){
             Game.setRedType("CP");
+            cpu2.setSide(false);
         }
     }
     

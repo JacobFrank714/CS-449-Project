@@ -36,18 +36,21 @@ public class GeneralGameController extends NewGameController {
                     gridBoard.add(squares[i][j] = new Square(i, j), j, i);
                 }
             }
-            borderPane.setCenter(gridBoard);  
+            borderPane.setCenter(gridBoard);
+            Game.setWinnerProp(" ");
     }
 
     public static void gameOver(Integer bpoints, Integer rpoints){
-        if(bpoints > rpoints){
+        if(Game.bpoints > Game.rpoints){
             Game.setWinnerProp("B");
         }
-        else if (bpoints < rpoints) {
+        else if (Game.bpoints < Game.rpoints) {
             Game.setWinnerProp("R");
         }
         else{
             Game.setWinnerProp("T");
         }
+        Game.bpoints = 0;
+        Game.rpoints = 0;
     }
 }
