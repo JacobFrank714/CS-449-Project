@@ -19,5 +19,20 @@ import javafx.collections.ObservableList;
 public class ComputerPlayer_Test {
 
     
+    @BeforeClass
+	public static void setUp(){
+		Platform.startup(()->{});
+	}
+
+
+	@AfterClass
+	public static void tearDown(){
+		Platform.exit();
+	}
+
+    @Test
+    public static void test(){
+        
+    }
     
 }
