@@ -34,6 +34,7 @@ public class Square extends StackPane {
 			// makes that space unreachable so no overlapping moves
 			Game.spaces.remove(this);
 			if(Game.getBlueTurnPropValue()){
+				Game.moves.add(this.getId()+" "+Game.bluePlayerMove);
 				
 				Text x = new Text(Game.bluePlayerMove);
 
@@ -51,6 +52,7 @@ public class Square extends StackPane {
 				}
 			}
 			else if (!Game.getBlueTurnPropValue()){
+				Game.moves.add(this.getId()+" "+Game.redPlayerMove);
 
 				Text x= new Text(Game.redPlayerMove);
 

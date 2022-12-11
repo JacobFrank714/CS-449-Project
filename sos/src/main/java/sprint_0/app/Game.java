@@ -24,6 +24,7 @@ public class Game {
     public static String gameType = new String("SM");
     public static Integer bpoints = 0;
     public static Integer rpoints = 0;
+    public static Boolean saveGame = false;
     
     public BooleanProperty getBlueTurnProp() {
         return blueTurnProp;
@@ -89,6 +90,7 @@ public class Game {
 
     @FXML
     public static ArrayList<Square> spaces = new ArrayList<Square>();
+    public static ArrayList<String> moves = new ArrayList<String>();
 
     private static String getDirection(Square n, String direction){
         Integer x = Integer.valueOf(n.getId().split(",")[0]);
@@ -144,7 +146,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -171,7 +173,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -203,7 +205,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -230,7 +232,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -262,7 +264,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -289,7 +291,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -321,7 +323,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -348,7 +350,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -380,7 +382,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -407,7 +409,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -439,7 +441,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -466,7 +468,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -498,7 +500,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -525,7 +527,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -557,7 +559,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -584,7 +586,7 @@ public class Game {
                                         if(n.getText().equals("S")){
                                             if(gameType.equals("SM")){
                                                 spaces.clear();
-                                                SimpleGameController.gameOver(getBlueTurnPropValue());
+                                                SimpleGameController.gameOver(getBlueTurnPropValue(), moves);
                                             }
                                             else if(gameType.equals("GM")){
                                                 if(getBlueTurnPropValue()){
@@ -607,7 +609,7 @@ public class Game {
         }
         if(gameType.equals("GM")){
             if(spaces.size() == 0){
-                GeneralGameController.gameOver(bpoints, rpoints);
+                GeneralGameController.gameOver(bpoints, rpoints, moves);
             }
         }
     }

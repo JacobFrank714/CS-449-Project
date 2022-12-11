@@ -3,6 +3,7 @@ package sprint_0.app;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
@@ -40,15 +41,24 @@ public class SimpleGameController extends NewGameController {
         Game.setWinnerProp(" ");
     }
 
-    public static void gameOver(Boolean turn){
+    public static void gameOver(Boolean turn, ArrayList<String> moves){
         if(turn){
             Game.setWinnerProp("B");
+            if(Game.saveGame){
+                saveGame(moves);
+            }
         }
         else if(!turn){
             Game.setWinnerProp("R");
+            if(Game.saveGame){
+                saveGame(moves);
+            }
         }
         else {
             Game.setWinnerProp("T");
+            if(Game.saveGame){
+                saveGame(moves);
+            }
         }
     }
 }

@@ -3,9 +3,13 @@ package sprint_0.app;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
 
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Pane;
@@ -33,10 +37,22 @@ public class NewGameController {
     @FXML
     protected Text WinText;
 
+    @FXML
+    protected CheckBox saveGame;
+
     public static ComputerPlayer cpu1 = new ComputerPlayer();
     public static ComputerPlayer cpu2 = new ComputerPlayer();
     
     Game content = new Game();
+
+    public void toggleSaveGame(ActionEvent e) throws IOException{
+        if(saveGame.isSelected()){
+            content.saveGame = true;
+        }
+        else{
+            content.saveGame = false;
+        }
+    }
     
     public void changeGameType(ActionEvent e) throws IOException{
         
@@ -90,6 +106,40 @@ public class NewGameController {
         else if (redPlayerMoveS.isSelected()){
             Game.setRedMove("S");
         }
+    }
+
+    static public void saveGame(ArrayList<String> moves){
+        createFile();
+        writeFile(moves);
+    }
+
+    public static void createFile(){
+        try {
+            File myObj = new File("LastGame.txt");
+            if (myObj.createNewFile()) {
+              System.out.println("File created: " + myObj.getName());
+            } else {
+              System.out.println("File already exists.");
+            }
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
+    }
+
+    public static void writeFile(ArrayList<String> moves){
+        try {
+            FileWriter myWriter = new FileWriter("LastGame.txt");
+            for(int i=0; i < moves.size();++i){
+                myWriter.write("Move "+i+": "+moves.get(i));
+                myWriter.write("\n");
+            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
     }
 
     @FXML
