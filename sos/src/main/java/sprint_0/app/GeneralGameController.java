@@ -60,6 +60,7 @@ public class GeneralGameController extends NewGameController {
                 saveGame(moves);
             }
         }
+        Game.moves.clear();
         Game.bpoints = 0;
         Game.rpoints = 0;
     }

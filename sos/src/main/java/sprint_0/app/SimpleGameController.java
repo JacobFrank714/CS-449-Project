@@ -60,5 +60,6 @@ public class SimpleGameController extends NewGameController {
                 saveGame(moves);
             }
         }
+        Game.moves.clear();
     }
 }
